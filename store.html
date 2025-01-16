@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Loja DBC UNIVERSE X</title>
+    <style>
+        body {
+            background: url('gem.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'arial' sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 5;
+            color: #333;
+            overflow-x: hidden;
+            font-weight: bold;
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .header {
+            background-color: #ff6600;
+            /* Cor mais viva */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slide 10s linear infinite;
+        }
+        
+        .header .cupom {
+            float: left;
+        }
+        
+        .header .cart {
+            float: right;
+            color: white;
+        }
+        
+        .header::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .store {
+            background-color: #fff;
+            padding: 40px;
+            margin: 80px auto 20px;
+            border-radius: 15px;
+            max-width: 1200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product {
+            background-color: #dbdd61;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #f81414c0;
+            border-radius: 15px;
+            display: inline-block;
+            width: calc(33% - 40px);
+            vertical-align: top;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        
+        .product:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .product h3 {
+            margin: 15px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+        
+        .product p {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .product button {
+            position: relative;
+            background-color: #ffcc00;
+            border: none;
+            color: #333;
+            padding: 12px 25px;
+            cursor: pointer;
+            border-radius: 15px;
+            font-size: 1em;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s, background-color 0.4s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #e60012;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease-in-out;
+            z-index: -1;
+        }
+        
+        .product button:hover {
+            color: #fff;
+            /* Cor do texto quando passar o mouse */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product button:focus {
+            outline: none;
+            /* Remove a borda de foco padrão */
+        }
+        
+        .product button:active {
+            transform: scale(0.98);
+            /* Efeito de clique */
+        }
+        
+        .product button:hover::before {
+            transform: translateX(0);
+            /* Movimentação do fundo colorido */
+        }
+        
+        @media (max-width: 768px) {
+            .product {
+                width: calc(50% - 40px);
+                margin: 20px auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product {
+                width: calc(100% - 40px);
+                margin: 20px auto;
+            }
+        }
+        
+        h1,
+        h2 {
+            color: #e60012;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: #000;
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #aab14c;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                background-color: #aa7615;
+            }
+            50% {
+                background-color: #FF8C00;
+            }
+        }
+        
+        .navbar ul li a:hover {
+            background-color: #FF8C00;
+        }
+        
+        .footer {
+            background-color: rgb(128, 86, 25);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: #1c1c1c;
+            text-decoration: none;
+        }
+        
+        footer .copyright {
+            margin: 0;
+        }
+        
+        footer .links {
+            margin-top: 10px;
+        }
+        
+        footer .links a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        footer .links a:hover {
+            color: #ff9900;
+        }
+        /* Estilo para o modal do PIX */
+        
+        .modal {
+            display: none;
+            /* Inicialmente oculto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        /* Estilo do conteúdo do modal */
+        
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            /* Sombra 3D */
+            transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Animações para movimento 3D */
+        }
+        /* Animação para adicionar profundidade */
+        
+        .modal-content:hover {
+            transform: perspective(500px) rotateX(10deg) rotateY(10deg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+        /* Título do modal */
+        
+        .modal-content h3 {
+            font-size: 1.5em;
+            color: #e60012;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Sombras para efeito 3D no texto */
+        }
+        /* Descrição do modal */
+        
+        .modal-content p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        /* Estilo para o botão dentro do modal */
+        
+        .modal-content button {
+            background-color: #ff6600;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            cursor: pointer;
+            font-size: 1.2em;
+            border-radius: 25px;
+            /* Bordas mais arredondadas */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            /* Sombra 3D para o botão */
+            transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.2s ease;
+            /* Transições para o efeito 3D */
+        }
+        
+        .modal-content button:hover {
+            background-color: #ffcc00;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            /* Efeito 3D ao passar o mouse */
+            transform: translateY(-5px);
+            /* Efeito de movimento 3D */
+        }
+        
+        .modal-content button:active {
+            transform: translateY(2px);
+            /* Efeito de clique */
+        }
+        /* Efeito de bordas estilizadas para o modal */
+        
+        .modal-content {
+            border: 2px solid #ff6600;
+            /* Bordas coloridas */
+            background-image: linear-gradient(45deg, #ff6600, #ffcc00);
+            /* Efeito de gradiente nas bordas */
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.3);
+            /* Sombra interna e externa para o 3D */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="cupom">CUPOM: DBC-UNIVERSE X 15% de desconto!</div>
+    </div>
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="store.html">Loja</a></li>
+            <li>
+                <a href="Tutorial.html">Tutorial</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="store" id="store">
+        <div class="product">
+            <img src="dragonball1.png" alt="Vip Berseker">
+            <h3>Vip Berseker</h3>
+            <p>R$15</p>
+            <button>Comprar</button>
+        </div>
+        <div class="product">
+            <img src="dragonball2.png" alt="Vip Ssj5">
+            <h3>Vip Ssj5</h3>
+            <p>R$65</p>
+            <button>Comprar</button>
+        </div>
+        <div class="product">
+            <img src="dragonball3.png" alt="Vip Black">
+            <h3>Vip Xeno</h3>
+            <p>R$30</p>
+            <button>Comprar</button>
+        </div>
+        <div class="product">
+            <img src="dragonball4.png" alt="Vip Bestial">
+            <h3>Vip Bestial</h3>
+            <p>R$65</p>
+            <button>Comprar</button>
+        </div>
+        <div class="product">
+            <img src="dragonball5.png" alt="Vip Xeno">
+            <h3>Vip Black</h3>
+            <p>R$65</p>
+            <button>Comprar</button>
+        </div>
+    </div>
+
+
+    <!-- Modal de PIX -->
+    <div id="pixModal" class="modal">
+        <div class="modal-content">
+            <h3>Pagamento via PIX</h3>
+            <p>Para pagar via PIX, use o CPF: 00617541965</p>
+            <button id="closeModalButton">Fechar</button>
+        </div>
+    </div>
+
+
+
+    <footer class="footer">
+        <h2>Dragon Ball Universe</h2>
+        <div> <img src="goku.png" alt="Goku"> <img src="vegeta.png" alt="Vegeta"> <img src="shenron.png" alt="Shenron"> </div>
+        <p>Conecte-se com a gente nas redes sociais!</p>
+        <div class="footer-social">
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://discord.gg/JB4F5vTPgG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+        </div>
+        <div class="copyright">
+
+
+        </div>
+        <div class="links"> <a href="#privacy">Política de Privacidade</a> <a href="#terms">Termos de Uso</a> <a href="#contact">Contato</a> </div>
+        <p>&copy; 2025 Dragon Ball Universe X. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- javascript-->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll(".product button");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const productName = sanitize(this.parentElement.querySelector("h3").innerText);
+                    const paymentMethod = prompt("Escolha o método de pagamento:  2 para PIX");
+
+                    if (paymentMethod === "1") {
+                        redirectToPayment(productName);
+                    } else if (paymentMethod === "2") {
+                        showPixInfo(productName);
+                    } else {
+                        alert("Método de pagamento inválido.");
+                    }
+                });
+            });
+
+            function sanitize(input) {
+                const element = document.createElement('div');
+                element.innerText = input;
+                return element.innerHTML;
+            }
+
+            function redirectToPayment(productName) {
+                const paymentUrl = `https://www.exemplo.com/pagamento?produto=${encodeURIComponent(productName)}`;
+                window.location.href = paymentUrl;
+            }
+
+            function showPixInfo(productName) {
+                // Exibe o modal do PIX
+                const modal = document.getElementById("pixModal");
+                modal.style.display = "flex";
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+                const modal = document.getElementById("pixModal");
+                modal.style.display = "none";
+            }
+
+            // Fechar o modal ao clicar fora da área do conteúdo
+            window.onclick = function(event) {
+                const modal = document.getElementById("pixModal");
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // Fechar o modal quando o botão de fechar for clicado
+            const closeModalButton = document.getElementById("closeModalButton");
+            if (closeModalButton) {
+                closeModalButton.addEventListener("click", closeModal);
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

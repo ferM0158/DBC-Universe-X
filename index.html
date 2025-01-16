@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>DBC UNIVERSE X </title>
+    <style>
+        body {
+            background: url('gem.png') no-repeat center center fixed;
+            background-size: cover;
+            color: rgb(114, 18, 18);
+            font-family: 'arial' sans-serif;
+            margin: 0;
+            padding: 5;
+            overflow-x: hidden;
+            font-weight: bold;
+            /* Negrito */
+            background-color: rgb(252, 5, 157);
+            /* Cor de fundo */
+            border-radius: 3px;
+            /* Bordas arredondadas */
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .header {
+            background-color: #ff6600;
+            /* Cor mais viva */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: slide 10s linear infinite;
+        }
+        
+        .header .cupom {
+            float: left;
+        }
+        
+        .header .cart {
+            float: right;
+            color: white;
+        }
+        
+        .header::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 38px;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            /* Cor de fundo preta */
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar::before {
+            content: "";
+            position: absolute;
+            top: -38px;
+            /* Altura do espaço adicional preenchido */
+            left: 0;
+            width: 100%;
+            height: 38px;
+            /* Altura do espaço adicional preenchido */
+            background-color: #000;
+            /* Mesma cor de fundo preta */
+        }
+        
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        
+        .navbar ul li a {
+            color: #fff;
+            /* Cor do texto branca */
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #aab14c;
+            /* Cor de fundo laranja */
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            animation: blink 1s infinite;
+            /* Animação de piscar */
+        }
+        
+        @keyframes blink {
+            0%,
+            100% {
+                background-color: #aa7615;
+                /* Cor inicial */
+            }
+            50% {
+                background-color: #FF8C00;
+                /* Cor de destaque */
+            }
+        }
+        
+        .navbar ul li a:hover {
+            background-color: #FF8C00;
+            /* Cor de fundo ao passar o mouse */
+        }
+        
+        .main {
+            margin-left: 220px;
+            padding: 80px 20px 20px 20px;
+            text-align: center;
+        }
+        
+        .main .logo {
+            margin-bottom: 20px;
+        }
+        
+        .main .server,
+        .main .discord {
+            margin: 10px 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            /* Cor de fundo clara */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), /* Sombra principal */
+            0 6px 6px rgba(0, 0, 0, 0.1);
+            /* Sombra secundária */
+            transition: transform 0.3s, box-shadow 0.3s;
+            /* Transições suaves */
+            border: 1px solid #ddd;
+            /* Bordas sutis */
+        }
+        
+        h1,
+        h2 {
+            color: #e60012;
+        }
+        
+        .main .server {
+            background-color: #e3f2fd;
+            /* Cor de fundo azul claro */
+        }
+        
+        .main .discord {
+            background-color: #e8f5e9;
+            /* Cor de fundo verde claro */
+        }
+        /* Efeito de "hover" para um visual 3D */
+        
+        .main .server:hover,
+        .main .discord:hover {
+            transform: translateY(-10px);
+            /* Eleva a div */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), /* Sombra principal */
+            0 12px 12px rgba(0, 0, 0, 0.1);
+            /* Sombra secundária */
+        }
+        
+        .main .server p,
+        .main .discord p {
+            color: #333;
+            /* Cor do texto */
+            font-family: Arial, sans-serif;
+            /* Fonte do texto */
+            margin: 0;
+            /* Remove margens padrão */
+        }
+        
+        .main .modpacks {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+        }
+        
+        .main .modpacks button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            border-radius: 8px;
+            box-shadow: 0 5px #006080;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .main .modpacks button:hover {
+            background-color: #005f6b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .main .modpacks button:active {
+            background-color: #004a54;
+            box-shadow: 0 5px #006080;
+            transform: translateY(1px);
+        }
+        
+        .main .modpacks i {
+            font-size: 24px;
+            color: #fff;
+            margin-left: 10px;
+        }
+        /* Estilos para tablets */
+        
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            .main .modpacks {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .main .modpacks button {
+                font-size: 14px;
+                padding: 12px 24px;
+            }
+            .main .modpacks i {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+        /* Estilos para dispositivos móveis */
+        
+        @media (max-width: 480px) {
+            body {
+                font-size: 12px;
+            }
+            .main .modpacks {
+                padding: 10px;
+            }
+            .main .modpacks button {
+                font-size: 12px;
+                padding: 10px 20px;
+            }
+        }
+        
+        .main .dbc-universe-x {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #e0f7fa;
+            /* Cor de fundo */
+            border-left: 5px solid #00796b;
+            /* Barra lateral */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            font-family: Arial, sans-serif;
+            /* Fonte do texto */
+            color: #004d40;
+            /* Cor do texto */
+            line-height: 1.6;
+            /* Altura da linha */
+        }
+        
+        .main .dbc-universe-x .logo {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .main .dbc-universe-x .text {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            padding: 10px 20px;
+            color: #fff;
+            /* Cor do texto */
+            background: linear-gradient(45deg, #FF5722, #FFC107);
+            /* Gradiente de fundo */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            /* Sombra 3D */
+            font-family: 'Arial', sans-serif;
+            /* Fonte do texto */
+            font-size: 18px;
+            /* Tamanho da fonte */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            /* Sombra do texto */
+            transition: transform 0.3s, box-shadow 0.3s;
+            /* Transições suaves */
+        }
+        
+        .main .dbc-universe-x .text:hover {
+            transform: scale(1.05) rotate(-1deg);
+            /* Efeito de escala e rotação */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            /* Sombra mais intensa */
+        }
+        
+        .navigate {
+            background-color: gray;
+            padding: 10px;
+            text-align: center;
+            border-radius: 15px;
+        }
+        
+        .navigate button {
+            background-color: yellow;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .navigate button:hover {
+            transform: scale(1.1);
+        }
+        
+        .discord-widget {
+            background-color: #394c8f;
+            padding: 5px;
+            margin: 5px;
+            text-align: right;
+            border-radius: 0px;
+            margin-left: 400px;
+        }
+        
+        .footer {
+            background-color: rgb(128, 86, 25);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+        
+        .tutorial {
+            background-color: black;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .store {
+            background-color: gray;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .product {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            margin: 10px;
+            border: 1px solid white;
+            border-radius: 15px;
+            display: inline-block;
+            width: 30%;
+            text-align: left;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .product:hover {
+            transform: scale(1.05);
+        }
+        
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        .product h3 {
+            margin: 10px 0;
+        }
+        
+        .product p {
+            margin: 5px 0;
+        }
+        
+        .product button {
+            background-color: yellow;
+            border: none;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+        
+        .product button:hover {
+            transform: scale(1.1);
+        }
+        
+        .fab {
+            font-size: 24px;
+            /* Tamanho do ícone */
+            color: #000;
+            /* Cor do ícone */
+            margin: 10px;
+            /* Margem ao redor dos ícones */
+        }
+        
+        .fab:hover {
+            color: #007BFF;
+            /* Cor ao passar o mouse */
+        }
+        
+        .info {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #e0f7fa;
+            /* Cor de fundo */
+            border-left: 5px solid #00796b;
+            /* Barra lateral */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            font-family: Arial, sans-serif;
+            /* Fonte do texto */
+            color: #004d40;
+            /* Cor do texto */
+            line-height: 1.6;
+            /* Altura da linha */
+        }
+        
+        .info p {
+            margin: 10px 0;
+            /* Margem entre parágrafos */
+        }
+        
+        .info p:first-child {
+            font-weight: bold;
+            /* Negrito no primeiro parágrafo */
+            font-size: 1.2em;
+            /* Tamanho da fonte maior no primeiro parágrafo */
+        }
+        
+        .welcome {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #e0f7fa;
+            /* Cor de fundo */
+            border-left: 5px solid #00796b;
+            /* Barra lateral */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            /* Sombra */
+            font-family: Arial, sans-serif;
+            /* Fonte do texto */
+            color: #004d40;
+            /* Cor do texto */
+            line-height: 1.6;
+            /* Altura da linha */
+        }
+        
+        .welcome p {
+            margin: 10px 0;
+            /* Margem entre parágrafos */
+        }
+        
+        .welcome p:first-child {
+            font-weight: bold;
+            /* Negrito no primeiro parágrafo */
+            font-size: 1.2em;
+            /* Tamanho da fonte maior no primeiro parágrafo */
+        }
+        
+        .content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .discord-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #7289da;
+            font-weight: bold;
+        }
+        
+        .discord-link img {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .youtube-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #ff0000;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .youtube-link i {
+            margin-right: 8px;
+        }
+        
+        .youtube-link:hover {
+            background-color: #cc0000;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            color: #1c1c1c;
+            text-decoration: none;
+        }
+        
+        footer .copyright {
+            margin: 0;
+        }
+        
+        footer .links {
+            margin-top: 10px;
+        }
+        
+        footer .links a {
+            color: #ffcc00;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        footer .links a:hover {
+            color: #ff9900;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="cupom">CUPOM: DBC-UNIVERSE X 15% de desconto!</div>
+
+    </div>
+    <div class="navbar">
+        <ul>
+            <li><a href="file:///C:/Users/Pichau/Downloads/site%20ferm/site%20ferm/fotos%20site/index.html.html">Home</a></li>
+            <li><a href="file:///C:/Users/Pichau/Downloads/site%20ferm/site%20ferm/fotos%20site/store.html">Loja</a></li>
+            <li>
+                <a href="file:///C:/Users/Pichau/Downloads/site%20ferm/site%20ferm/fotos%20site/Tutorial.html">Tutorial</a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="main">
+        <div class="logo">
+
+        </div>
+        <div class="server">
+            <h2>SERVER</h2>
+            <p>Conecte-se no servidor usando o ip:br.redhosting.com.br:25789</p>
+            <p>Temos agora 100 jogadores online!</p>
+        </div>
+        <div class="discord">
+            <h2>DISCORD</h2>
+            <p>Entre no discord em <a href="https://discord.gg/JB4F5vTPgG">https://discord.gg/JB4F5vTPgG</a></p>
+            <p>Membros no Discord: 60</p>
+        </div>
+        <div class="modpacks">
+            <a href="link-para-seu-modpack.zip" download>
+                <button>Baixe o MODPACKS</button>
+                <i class="fas fa-archive"></i>
+                <!-- Ícone de arquivo -->
+            </a>
+        </div>
+        <div class="dbc-universe-x text">
+            <h2>DBC Universe</h2>
+            <p>Confira abaixo os Cupons!</p>
+        </div>
+    </div>
+    <div class="welcome">
+        <p>Boas vindas à DBC Universe, confira nosso Discord e participe da comunidade!</p>
+        <p>Use o Cupom "DBC Universe" para 15% de desconto!</p>
+    </div>
+    <div class="info">
+        <p>Olá!</p>
+        <p>Através dessa Loja, você conseguirá, de forma automática, os itens no Servidor, sem a necessidade de comunicar um Admin! Mas caso sinta necessidade de comunicação ou mesmo possuir dúvidas, sinta-se à vontade para contatar um Admin através do nosso
+            Discord, link bem ao Lado!</p>
+    </div>
+
+
+
+
+    <div class="discord-widget">
+        <iframe src="https://discord.com/widget?id=1306366170483396672&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+        <ul>
+            <li>Bate-papo💬</li>
+            <li>Spoilers🫦</li>
+            <li>Jogando-1🎮
+                <li>
+        </ul>
+    </div>
+    <div class="tutorial">
+        <div class="tutorial">
+            <div class="tutorial">
+                <p>Aqui vai o conteúdo do tutorial...</p>
+            </div>
+
+
+            <footer class="footer">
+                <h2>Dragon Ball Universe</h2>
+                <div> <img src="goku.png" alt="Goku"> <img src="vegeta.png" alt="Vegeta"> <img src="shenron.png" alt="Shenron"> </div>
+                <p>Conecte-se com a gente nas redes sociais!</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="https://discord.gg/JB4F5vTPgG" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                </div>
+                <div class="copyright">
+
+
+                </div>
+                <div class="links"> <a href="#privacy">Política de Privacidade</a> <a href="#terms">Termos de Uso</a> <a href="#contact">Contato</a> </div>
+                <p>&copy; 2025 Dragon Ball Universe X. Todos os direitos reservados.</p>
+                <p>&copy; Desenvolvido por Tioash - Direitos Autorais</p>
+            </footer>
+
+
+            <!-- -->
+            <script>
+            </script>
+
+
+</body>
+
+</html>
